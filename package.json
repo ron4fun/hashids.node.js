@@ -2,7 +2,7 @@
   "author": "Ivan Akimov <ivan@grather.com> (https://twitter.com/ivanakimov)",
   "name": "hashids",
   "description": "A small Node.js class to generate YouTube-like hashes from one or many numbers. Use hashids when you do not want to expose your database ids to the user. ",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "preferGlobal": true,
   "homepage": "http://www.hashids.org/node-js/",
   "repository": {
