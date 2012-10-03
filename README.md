@@ -38,15 +38,15 @@ You can pass a unique salt value so your hashes differ from everyone else's. I u
 
 ```javascript
 
-var hashids = require("hashids"),
-	hashes = new hashids("this is my salt");
+var Hashids = require("hashids"),
+	hashids = new Hashids("this is my salt");
 
-var hash = hashes.encrypt(12345);
+var hash = hashids.encrypt(12345);
 ```
 
 `hash` is now going to be:
 	
-	ryKo
+	ryBo
 
 #### Decrypting
 
@@ -54,10 +54,10 @@ Notice during decryption, same salt value is used:
 
 ```javascript
 
-var hashids = require("hashids"),
-	hashes = new hashids("this is my salt");
+var Hashids = require("hashids"),
+	hashids = new Hashids("this is my salt");
 
-var numbers = hashes.decrypt("ryKo");
+var numbers = hashids.decrypt("ryBo");
 ```
 
 `numbers` is now going to be:
@@ -70,10 +70,10 @@ Decryption will not work if salt is changed:
 
 ```javascript
 
-var hashids = require("hashids"),
-	hashes = new hashids("this is my pepper");
+var Hashids = require("hashids"),
+	hashids = new Hashids("this is my pepper");
 
-var numbers = hashes.decrypt("ryKo");
+var numbers = hashids.decrypt("ryBo");
 ```
 
 `numbers` is now going to be:
@@ -84,24 +84,24 @@ var numbers = hashes.decrypt("ryKo");
 
 ```javascript
 
-var hashids = require("hashids"),
-	hashes = new hashids("this is my salt");
+var Hashids = require("hashids"),
+	hashids = new Hashids("this is my salt");
 
-var hash = hashes.encrypt(683, 94108, 123, 5);
+var hash = hashids.encrypt(683, 94108, 123, 5);
 ```
 
 `hash` is now going to be:
 	
-	zKphM54nuAyu5
+	zBphL54nuMyu5
 	
 #### Decrypting is done the same way
 
 ```javascript
 
-var hashids = require("hashids"),
-	hashes = new hashids("this is my salt");
+var Hashids = require("hashids"),
+	hashids = new Hashids("this is my salt");
 
-var numbers = hashes.decrypt("zKphM54nuAyu5");
+var numbers = hashids.decrypt("zBphL54nuMyu5");
 ```
 
 `numbers` is now going to be:
@@ -114,24 +114,24 @@ Here we encrypt integer 1, and set the minimum hash length to **8** (by default 
 
 ```javascript
 
-var hashids = require("hashids"),
-	hashes = new hashids("this is my salt", 8);
+var Hashids = require("hashids"),
+	hashids = new Hashids("this is my salt", 8);
 
-var hash = hashes.encrypt(1);
+var hash = hashids.encrypt(1);
 ```
 
 `hash` is now going to be:
 	
-	rjiMRirL
+	b9iLXiAa
 	
 #### Decrypting
 
 ```javascript
 
-var hashids = require("hashids"),
-	hashes = new hashids("this is my salt", 8);
+var Hashids = require("hashids"),
+	hashids = new Hashids("this is my salt", 8);
 
-var numbers = hashes.decrypt("rjiMRirL");
+var numbers = hashids.decrypt("b9iLXiAa");
 ```
 
 `numbers` is now going to be:
@@ -144,10 +144,10 @@ Here we set the alphabet to consist of only four letters: "abcd"
 
 ```javascript
 
-var hashids = require("hashids"),
-	hashes = new hashids("this is my salt", 0, "abcd");
+var Hashids = require("hashids"),
+	hashids = new Hashids("this is my salt", 0, "abcd");
 
-var hash = hashes.encrypt(1, 2, 3, 4, 5);
+var hash = hashids.encrypt(1, 2, 3, 4, 5);
 ```
 
 `hash` is now going to be:
@@ -163,42 +163,42 @@ Having said that, this algorithm does try to make these hashes unguessable and u
 
 ```javascript
 
-var hashids = require("hashids"),
-	hashes = new hashids("this is my salt");
+var Hashids = require("hashids"),
+	hashids = new Hashids("this is my salt");
 
-var hash = hashes.encrypt(5, 5, 5, 5);
+var hash = hashids.encrypt(5, 5, 5, 5);
 ```
 
 You don't see any repeating patterns that might show there's 4 identical numbers in the hash:
 
-	GMh5SAt9
+	GLh5SMs9
 
 Same with incremented numbers:
 
 ```javascript
 
-var hashids = require("hashids"),
-	hashes = new hashids("this is my salt");
+var Hashids = require("hashids"),
+	hashids = new Hashids("this is my salt");
 
-var hash = hashes.encrypt(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+var hash = hashids.encrypt(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 ```
 
 `hash` will be :
 	
-	zEUzHySGIpuyhpF6Tasj
+	zEUzfySGIpuyhpF6HaC7
 	
 ### Incrementing number hashes:
 
 ```javascript
 
-var hashids = require("hashids"),
-	hashes = new hashids("this is my salt");
+var Hashids = require("hashids"),
+	hashids = new Hashids("this is my salt");
 
-var hash1 = hashes.encrypt(1), /* MR */
-	hash2 = hashes.encrypt(2), /* ed */
-	hash3 = hashes.encrypt(3), /* o9 */
-	hash4 = hashes.encrypt(4), /* 4n */
-	hash5 = hashes.encrypt(5); /* a5 */
+var hash1 = hashids.encrypt(1), /* LX */
+	hash2 = hashids.encrypt(2), /* ed */
+	hash3 = hashids.encrypt(3), /* o9 */
+	hash4 = hashids.encrypt(4), /* 4n */
+	hash5 = hashids.encrypt(5); /* a5 */
 ```
 
 ## Speed
@@ -234,12 +234,17 @@ Therefore, this algorithm tries to avoid generating most common English curse wo
 	
 ## Changelog
 
-**0.1.3 - Current Stable**
+**0.1.4 - Current Stable**
+
+- Global var leak for hashSplit (thanks to [@BryanDonovan](https://github.com/BryanDonovan))
+- Class capitalization (thanks to [@BryanDonovan](https://github.com/BryanDonovan))
+
+**0.1.3**
 
 	Warning: If you are using 0.1.2 or below, updating to this version will change your hashes.
 
-- Updated default alphabet
-- Constructor removes duplicate characters for default alphabet as well
+- Updated default alphabet (thanks to [@speps](https://github.com/speps))
+- Constructor removes duplicate characters for default alphabet as well (thanks to [@speps](https://github.com/speps))
 
 **0.1.2**
 
