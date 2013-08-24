@@ -1,31 +1,15 @@
 
-# hashids
+![hashids](http://www.hashids.org.s3.amazonaws.com/public/img/hashids.png "Hashids")
 
-A small Node.js class to generate YouTube-like hashes from one or many numbers. Use hashids when you do not want to expose your database ids to the user.
+## Full Documentation
 
-[http://www.hashids.org/node-js/](http://www.hashids.org/node-js/)
+A small Node.js class to generate YouTube-like hashes from one or many numbers. Use hashids when you do not want to expose your database ids to the user. Read full documentation at: [http://www.hashids.org/node-js/](http://www.hashids.org/node-js/)
 
-## What is it?
-
-hashids (Hash ID's) creates short, unique, decryptable hashes from unsigned integers.
-
-It was designed for websites to use in URL shortening, tracking stuff, or making pages private (or at least unguessable).
-
-This algorithm tries to satisfy the following requirements:
-
-1. Hashes must be unique and decryptable.
-2. They should be able to contain more than one integer (so you can use them in complex or clustered systems).
-3. You should be able to specify minimum hash length.
-4. Hashes should not contain basic English curse words (since they are meant to appear in public places - like the URL).
-
-Instead of showing items as `1`, `2`, or `3`, you could show them as `U6dc`, `u87U`, and `HMou`.
-You don't have to store these hashes in the database, but can encrypt + decrypt on the fly.
-
-All integers need to be greater than or equal to zero.
+![hashids](https://api.travis-ci.org/ivanakimov/hashids.node.js.png "Hashids")
 
 ## Installation
 
-1. Node yourself: [http://nodejs.org/download/](http://nodejs.org/download/)
+1. Node it up: [http://nodejs.org/download/](http://nodejs.org/download/)
 2. Install using npm:
 	
 	`npm install -g hashids`
@@ -94,6 +78,14 @@ var hash = hashids.encrypt(683, 94108, 123, 5);
 	
 	zBphL54nuMyu5
 	
+You can also pass an array:
+
+```javascript
+
+var arr = [683, 94108, 123, 5];
+var hash = hashids.encrypt(arr);
+```
+
 #### Decrypting is done the same way
 
 ```javascript
