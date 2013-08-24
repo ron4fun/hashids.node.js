@@ -1,20 +1,20 @@
 
 ![hashids](http://www.hashids.org.s3.amazonaws.com/public/img/hashids.png "Hashids")
 
-## Full Documentation
+### Full Documentation
 
 A small Node.js class to generate YouTube-like hashes from one or many numbers. Use hashids when you do not want to expose your database ids to the user. Read full documentation at: [http://www.hashids.org/node-js/](http://www.hashids.org/node-js/)
 
 ![hashids](https://api.travis-ci.org/ivanakimov/hashids.node.js.png "Hashids")
 
-## Installation
+### Installation
 
 1. Node it up: [http://nodejs.org/download/](http://nodejs.org/download/)
 2. Install using npm:
 	
 	`npm install -g hashids`
 	
-## Usage
+### Usage
 
 #### Encrypting one number
 
@@ -146,7 +146,26 @@ var hash = hashids.encrypt(1, 2, 3, 4, 5);
 	
 	adcdacddcdaacdad
 	
-## Randomness
+### MongoDB Support
+
+MongoDB uses hex strings for their ObjectIds. You can convert them to Hashids like this:
+
+```javascript
+
+var Hashids = require("hashids"),
+	hashids = new Hashids("this is my salt");
+
+var hash = hashids.encryptHex("507f191e810c19729de860ea");
+var objectId = hashids.decryptHex(hash);
+```
+
+`objectId` will be as expected:
+	
+	507f191e810c19729de860ea
+	
+The length of the hex string does not matter -- it does not have to be a MongoDB ObjectId.
+	
+### Randomness
 
 The primary purpose of hashids is to obfuscate ids. It's not meant or tested to be used for security purposes or compression.
 Having said that, this algorithm does try to make these hashes unguessable and unpredictable:
@@ -193,7 +212,7 @@ var hash1 = hashids.encrypt(1), /* LX */
 	hash5 = hashids.encrypt(5); /* a5 */
 ```
 
-## Speed
+### Speed
 
 Even though speed is an important factor of every hashing algorithm, primary goal here was encoding several numbers at once and making the hash unique and random.
 
@@ -216,7 +235,7 @@ However, there are still several things you could do:
 2. Use [MongoDB](http://www.mongodb.org/) or [Redis](http://redis.io/).
 3. You could also decrease the length of your alphabet. Your hashes will become longer, but calculating them will be faster.
 
-## Bad hashes
+### Bad hashes
 
 I wrote this class with the intent of placing these hashes in visible places - like the URL. If I create a unique hash for each user, it would be unfortunate if the hash ended up accidentally being a bad word. Imagine auto-creating a URL with hash for your user that looks like this - `http://example.com/user/a**hole`
 
@@ -224,7 +243,7 @@ Therefore, this algorithm tries to avoid generating most common English curse wo
 	
 	c, C, s, S, f, F, h, H, u, U, i, I, t, T
 	
-## Changelog
+### Changelog
 
 **0.1.4 - Current Stable**
 
@@ -260,12 +279,12 @@ Therefore, this algorithm tries to avoid generating most common English curse wo
 	
 - First commit
 
-## Contact
+### Contact
 
 Follow me [@IvanAkimov](http://twitter.com/ivanakimov)
 
 Or [http://ivanakimov.com](http://ivanakimov.com)
 
-## License
+### License
 
-MIT License. See the `LICENSE` file.
+MIT License. See the `LICENSE` file. You can use Hashids in open source projects and commercial products. Don't break the Internet. Kthxbye.
