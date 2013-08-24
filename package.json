@@ -9,7 +9,7 @@
     "type": "git",
     "url": "https://github.com/ivanakimov/hashids.node.js"
   },
-  "main": "index.js",
+  "main": "lib/hashids.js",
   "dependencies": {},
   "devDependencies": {},
   "optionalDependencies": {},
