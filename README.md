@@ -159,6 +159,10 @@ var hash = hashids.encryptHex("507f191e810c19729de860ea");
 var objectId = hashids.decryptHex(hash);
 ```
 
+`hash` will be:
+	
+	yNyaoWeKWVINWqvaM9bw
+	
 `objectId` will be as expected:
 	
 	507f191e810c19729de860ea
@@ -212,40 +216,32 @@ var hash1 = hashids.encrypt(1), /* LX */
 	hash5 = hashids.encrypt(5); /* a5 */
 ```
 
-### Speed
+### Curses! #$%@
 
-Even though speed is an important factor of every hashing algorithm, primary goal here was encoding several numbers at once and making the hash unique and random.
+This code was written with the intent of placing created hashes in visible places - like the URL. Which makes it unfortunate if generated hashes accidentally formed a bad word.
 
-With Node 0.8.8, on a *2.7 GHz Intel Core i7 with 16GB of RAM*, it takes roughly **0.08 seconds** to:
-
-1. Encrypt 1000 hashes consisting of 1 integer `hashids.encrypt(12);`
-2. And decrypt these 1000 hashes back into integers `hashids.decrypt(hash);` while ensuring they are valid
-
-If we do the same with 3 integers, for example: `hashids.encrypt(10, 11, 12);`
--- the number jumps up to **0.13 seconds** on the same machine.
-
-*Sidenote: The numbers tested with were relatively small -- if you increase them, the speed will obviously decrease.*
-
-#### What you could do to speed it up
-
-Usually people either encrypt or decrypt one hash per request, so the algorithm should already be fast enough for that.
-However, there are still several things you could do:
-
-1. If you are generating a lot of hashes at once, wrap this class in your own so you can cache hashes.
-2. Use [MongoDB](http://www.mongodb.org/) or [Redis](http://redis.io/).
-3. You could also decrease the length of your alphabet. Your hashes will become longer, but calculating them will be faster.
-
-### Bad hashes
-
-I wrote this class with the intent of placing these hashes in visible places - like the URL. If I create a unique hash for each user, it would be unfortunate if the hash ended up accidentally being a bad word. Imagine auto-creating a URL with hash for your user that looks like this - `http://example.com/user/a**hole`
-
-Therefore, this algorithm tries to avoid generating most common English curse words with the default alphabet. This is done by never placing the following letters next to each other:
+Therefore, the algorithm tries to avoid generating most common English curse words. This is done by never placing the following letters next to each other:
 	
 	c, C, s, S, f, F, h, H, u, U, i, I, t, T
 	
 ### Changelog
 
-**0.1.4 - Current Stable**
+**0.3.0 - Current Stable**
+
+**PRODUCED HASHES IN THIS VERSION ARE DIFFERENT THAN IN 0.1.4, DO NOT UPDATE IF YOU NEED THEM TO STAY THE SAME**
+
+- Same algorithm as [PHP version](https://github.com/ivanakimov/hashids.php) now
+- Overall approximately **4x** faster
+- Consistent shuffle function uses slightly modified version of [Fisher–Yates algorithm](http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm)
+- Generate large hash strings faster (where _minHashLength_ is more than 1000 chars)
+- When using _minimum hash length_ parameter, hash character disorder has been improved
+- Basic English curse words will now be avoided even with custom alphabet
+- New unit tests with [Jasmine](https://github.com/mhevery/jasmine-node)
+- Support for MongoDB ObjectId
+- _encrypt_ function now also accepts array of integers as input
+- Passing JSLint now
+
+**0.1.4**
 
 - Global var leak for hashSplit (thanks to [@BryanDonovan](https://github.com/BryanDonovan))
 - Class capitalization (thanks to [@BryanDonovan](https://github.com/BryanDonovan))
