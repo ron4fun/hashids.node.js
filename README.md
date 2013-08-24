@@ -16,7 +16,7 @@ A small Node.js class to generate YouTube-like hashes from one or many numbers. 
 	
 ### Production Note
 
-**BE CAREFUL WHICH VERSION OF HASHIDS YOU ARE USING.** Since future improvements to Hashids might alter produced hashes, it's a good idea to specify exact Hashids version in your **package.json**, if their consistency is important to you (if you are storing them in database):
+**BE CAREFUL WHICH VERSION OF HASHIDS YOU ARE USING.** Since future improvements to Hashids might alter produced hashes, it's a good idea to specify *exact* Hashids version in your **package.json**, if their consistency is important to you (if you are storing them in database):
 
 ```javascript
 	
@@ -29,7 +29,7 @@ A small Node.js class to generate YouTube-like hashes from one or many numbers. 
 
 #### Encrypting one number
 
-You can pass a unique salt value so your hashes differ from everyone else's. I use "**this is my salt**" as an example.
+You can pass a unique salt value so your hashes differ from everyone else's. I use "this is my salt" as an example.
 
 ```javascript
 
@@ -113,7 +113,7 @@ var numbers = hashids.decrypt("aBMswoO2UB3Sj");
 	
 #### Encrypting and specifying minimum hash length
 
-Here we encrypt integer 1, and set the minimum hash length to **8** (by default it's **0** -- meaning hashes will be the shortest possible length).
+Here we encrypt integer 1, and set the **minimum** hash length to **8** (by default it's **0** -- meaning hashes will be the shortest possible length).
 
 ```javascript
 
@@ -143,7 +143,7 @@ var numbers = hashids.decrypt("gB0NV05e");
 	
 #### Specifying custom hash alphabet
 
-Here we set the alphabet to consist of valid hex chars: "0123456789abcdef"
+Here we set the alphabet to consist of valid hex characters: "0123456789abcdef"
 
 ```javascript
 
