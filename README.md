@@ -164,8 +164,7 @@ var hash = hashids.encrypt(1234567);
 	
 	b332db5
 	
-### MongoDB Support
-
+MongoDB Support
 -------
 
 MongoDB uses hex strings for their ObjectIds. You can convert them to Hashids like this:
