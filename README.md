@@ -14,6 +14,17 @@ A small Node.js class to generate YouTube-like hashes from one or many numbers. 
 	
 	`npm install -g hashids`
 	
+### Production Note
+
+**BE CAREFUL WHICH VERSION OF HASHIDS YOU ARE USING.** Since future improvements to Hashids might alter produced hashes, it's a good idea to specify exact Hashids version in your **package.json**, if their consistency is important to you (if you are storing them in database):
+
+```javascript
+	
+	"dependencies": {
+		"hashids": "0.3.0"
+	}
+```
+	
 ### Usage
 
 #### Encrypting one number
@@ -30,7 +41,7 @@ var hash = hashids.encrypt(12345);
 
 `hash` is now going to be:
 	
-	ryBo
+	NkK9
 
 #### Decrypting
 
@@ -41,7 +52,7 @@ Notice during decryption, same salt value is used:
 var Hashids = require("hashids"),
 	hashids = new Hashids("this is my salt");
 
-var numbers = hashids.decrypt("ryBo");
+var numbers = hashids.decrypt("NkK9");
 ```
 
 `numbers` is now going to be:
@@ -57,7 +68,7 @@ Decryption will not work if salt is changed:
 var Hashids = require("hashids"),
 	hashids = new Hashids("this is my pepper");
 
-var numbers = hashids.decrypt("ryBo");
+var numbers = hashids.decrypt("NkK9");
 ```
 
 `numbers` is now going to be:
@@ -76,7 +87,7 @@ var hash = hashids.encrypt(683, 94108, 123, 5);
 
 `hash` is now going to be:
 	
-	zBphL54nuMyu5
+	aBMswoO2UB3Sj
 	
 You can also pass an array:
 
@@ -93,7 +104,7 @@ var hash = hashids.encrypt(arr);
 var Hashids = require("hashids"),
 	hashids = new Hashids("this is my salt");
 
-var numbers = hashids.decrypt("zBphL54nuMyu5");
+var numbers = hashids.decrypt("aBMswoO2UB3Sj");
 ```
 
 `numbers` is now going to be:
@@ -114,7 +125,7 @@ var hash = hashids.encrypt(1);
 
 `hash` is now going to be:
 	
-	b9iLXiAa
+	gB0NV05e
 	
 #### Decrypting
 
@@ -123,7 +134,7 @@ var hash = hashids.encrypt(1);
 var Hashids = require("hashids"),
 	hashids = new Hashids("this is my salt", 8);
 
-var numbers = hashids.decrypt("b9iLXiAa");
+var numbers = hashids.decrypt("gB0NV05e");
 ```
 
 `numbers` is now going to be:
@@ -132,19 +143,19 @@ var numbers = hashids.decrypt("b9iLXiAa");
 	
 #### Specifying custom hash alphabet
 
-Here we set the alphabet to consist of only four letters: "abcd"
+Here we set the alphabet to consist of valid hex chars: "0123456789abcdef"
 
 ```javascript
 
 var Hashids = require("hashids"),
-	hashids = new Hashids("this is my salt", 0, "abcd");
+	hashids = new Hashids("this is my salt", 0, "0123456789abcdef");
 
-var hash = hashids.encrypt(1, 2, 3, 4, 5);
+var hash = hashids.encrypt(1234567);
 ```
 
 `hash` is now going to be:
 	
-	adcdacddcdaacdad
+	b332db5
 	
 ### MongoDB Support
 
@@ -186,7 +197,7 @@ var hash = hashids.encrypt(5, 5, 5, 5);
 
 You don't see any repeating patterns that might show there's 4 identical numbers in the hash:
 
-	GLh5SMs9
+	1Wc8cwcE
 
 Same with incremented numbers:
 
@@ -200,7 +211,7 @@ var hash = hashids.encrypt(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
 `hash` will be :
 	
-	zEUzfySGIpuyhpF6HaC7
+	kRHnurhptKcjIDTWC3sx
 	
 ### Incrementing number hashes:
 
@@ -209,11 +220,11 @@ var hash = hashids.encrypt(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 var Hashids = require("hashids"),
 	hashids = new Hashids("this is my salt");
 
-var hash1 = hashids.encrypt(1), /* LX */
-	hash2 = hashids.encrypt(2), /* ed */
-	hash3 = hashids.encrypt(3), /* o9 */
-	hash4 = hashids.encrypt(4), /* 4n */
-	hash5 = hashids.encrypt(5); /* a5 */
+var hash1 = hashids.encrypt(1), /* NV */
+	hash2 = hashids.encrypt(2), /* 6m */
+	hash3 = hashids.encrypt(3), /* yD */
+	hash4 = hashids.encrypt(4), /* 2l */
+	hash5 = hashids.encrypt(5); /* rD */
 ```
 
 ### Curses! #$%@
@@ -234,7 +245,7 @@ Therefore, the algorithm tries to avoid generating most common English curse wor
 - Overall approximately **4x** faster
 - Consistent shuffle function uses slightly modified version of [Fisher–Yates algorithm](http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm)
 - Generate large hash strings faster (where _minHashLength_ is more than 1000 chars)
-- When using _minimum hash length_ parameter, hash character disorder has been improved
+- When using _minHashLength_, hash character disorder has been improved
 - Basic English curse words will now be avoided even with custom alphabet
 - New unit tests with [Jasmine](https://github.com/mhevery/jasmine-node)
 - Support for MongoDB ObjectId
