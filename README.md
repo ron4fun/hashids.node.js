@@ -239,7 +239,7 @@ Therefore, the algorithm tries to avoid generating most common English curse wor
 
 **0.3.0 - Current Stable**
 
-**PRODUCED HASHES IN THIS VERSION ARE DIFFERENT THAN IN 0.1.4, DO NOT UPDATE IF YOU NEED THEM TO STAY THE SAME**
+**PRODUCED HASHES IN THIS VERSION ARE DIFFERENT THAN IN 0.1.4, DO NOT UPDATE IF YOU NEED THEM TO KEEP WORKING**
 
 - Same algorithm as [PHP version](https://github.com/ivanakimov/hashids.php) now
 - Overall approximately **4x** faster
