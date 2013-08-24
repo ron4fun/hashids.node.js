@@ -168,7 +168,7 @@ module.exports = Hashids = (function () {
 	
 	Hashids.prototype.decryptHex = function(hash) {
 		
-		var ret = "",
+		var ret = [],
 			i, len,
 			numbers = this.decrypt(hash);
 		
