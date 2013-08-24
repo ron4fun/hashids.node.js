@@ -1,12 +1,12 @@
 
 /* require hashids */
-var hashids = require("hashids");
+var Hashids = require("hashids");
 
 /* creating class object */
-var hashes = new hashids("this is my salt");
+var hashids = new Hashids("this is my salt");
 
 /* encrypting one number */
-var hash = hashes.encrypt(1337);
+var hash = hashids.encrypt(1337);
 
 /* hash is always a string */
 console.log(hash);
