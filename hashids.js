@@ -39,9 +39,9 @@ module.exports = Hashids = (function () {
 		this.alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 		this.seps = "cfhistuCFHISTU";
 		this.minHashLength = parseInt(minHashLength, 10) > 0 ? minHashLength : 0;
-		this.salt = salt !== null ? salt : "";
+		this.salt = (typeof salt === "string") ? salt : "";
 		
-		if (alphabet !== null && typeof alphabet === "string") {
+		if (typeof alphabet === "string") {
 			this.alphabet = alphabet;
 		}
 		
@@ -120,6 +120,10 @@ module.exports = Hashids = (function () {
 		
 		if (!numbers.length) {
 			return ret;
+		}
+		
+		if (numbers[0] instanceof Array) {
+			numbers = numbers[0];
 		}
 		
 		for (i = 0, len = numbers.length; i !== len; i++) {
