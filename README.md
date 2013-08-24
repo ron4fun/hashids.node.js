@@ -3,16 +3,14 @@
 
 ======
 
-### Full Documentation
-
+Full Documentation
 -------
 
 A small Node.js class to generate YouTube-like hashes from one or many numbers. Use hashids when you do not want to expose your database ids to the user. Read full documentation at: [http://www.hashids.org/node-js/](http://www.hashids.org/node-js/)
 
 ![hashids](https://api.travis-ci.org/ivanakimov/hashids.node.js.png "Hashids")
 
-### Installation
-
+Installation
 -------
 
 1. Node it up: [http://nodejs.org/download/](http://nodejs.org/download/)
@@ -20,8 +18,8 @@ A small Node.js class to generate YouTube-like hashes from one or many numbers. 
 	
 	`npm install -g hashids`
 	
-### Production Note
 
+Production Note
 -------
 
 **BE CAREFUL WHICH VERSION OF HASHIDS YOU ARE USING.** Since future improvements to Hashids might alter produced hashes, it's a good idea to specify *exact* Hashids version in your **package.json**, if their consistency is important to you (if you are storing them in database):
@@ -33,8 +31,7 @@ A small Node.js class to generate YouTube-like hashes from one or many numbers. 
 	}
 ```
 
-### Usage
-
+Usage
 -------
 
 #### Encrypting one number
@@ -192,8 +189,7 @@ var objectId = hashids.decryptHex(hash);
 	
 The length of the hex string does not matter -- it does not have to be a MongoDB ObjectId.
 	
-### Randomness
-
+Randomness
 -------
 
 The primary purpose of hashids is to obfuscate ids. It's not meant or tested to be used for security purposes or compression.
@@ -241,8 +237,7 @@ var hash1 = hashids.encrypt(1), /* NV */
 	hash5 = hashids.encrypt(5); /* rD */
 ```
 
-### Curses! #$%@
-
+Curses! #$%@
 -------
 
 This code was written with the intent of placing created hashes in visible places - like the URL. Which makes it unfortunate if generated hashes accidentally formed a bad word.
@@ -251,8 +246,7 @@ Therefore, the algorithm tries to avoid generating most common English curse wor
 	
 	c, C, s, S, f, F, h, H, u, U, i, I, t, T
 	
-### Changelog
-
+Changelog
 -------
 
 **0.3.0 - Current Stable**
@@ -304,16 +298,14 @@ Therefore, the algorithm tries to avoid generating most common English curse wor
 	
 - First commit
 
-### Contact
-
+Contact
 -------
 
 Follow me [@IvanAkimov](http://twitter.com/ivanakimov)
 
 Or [http://ivanakimov.com](http://ivanakimov.com)
 
-### License
-
+License
 -------
 
 MIT License. See the `LICENSE` file. You can use Hashids in open source projects and commercial products. Don't break the Internet. Kthxbye.
