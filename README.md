@@ -22,12 +22,14 @@ Installation
 Production Note
 -------
 
-**BE CAREFUL WHICH VERSION OF HASHIDS YOU ARE USING.** Since future improvements to Hashids might alter produced hashes, it's a good idea to specify *exact* Hashids version in your **package.json**, if their consistency is important to you (if you are storing them in database):
+**BE CAREFUL WHICH VERSION OF HASHIDS YOU ARE USING.**
+
+Since future improvements to Hashids might alter produced hashes, it's a good idea to specify *exact* Hashids version in your **package.json**, if their consistency is important to you (if you are storing them in database):
 
 ```javascript
 	
 	"dependencies": {
-		"hashids": "0.3.0"
+		"hashids": "0.3.1"
 	}
 ```
 
@@ -254,7 +256,12 @@ then just run `jasmine-node .` in the root folder.
 Changelog
 -------
 
-**0.3.0 - Current Stable**
+**0.3.1 - Current Stable**
+
+- minor: closure + readme update merged (thanks to [@krunkosaurus](https://github.com/krunkosaurus))
+- minor: a few cleanups
+
+**0.3.0**
 
 **PRODUCED HASHES IN THIS VERSION ARE DIFFERENT THAN IN 0.1.4, DO NOT UPDATE IF YOU NEED THEM TO KEEP WORKING:**
 
