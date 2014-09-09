@@ -17,6 +17,11 @@ Installation
 	
 	`npm install -g hashids`
 	
+Updating from v0.3 to 1.0?
+-------
+
+Read the `CHANGELOG` at the bottom of this readme!
+
 Client-side Version
 -------
 
