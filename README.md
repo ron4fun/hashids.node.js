@@ -37,7 +37,7 @@ Since future improvements to Hashids might alter produced hashes, it's a good id
 ```javascript
 	
 	"dependencies": {
-		"hashids": "1.0.0"
+		"hashids": "1.0.1"
 	}
 ```
 
@@ -264,6 +264,10 @@ then just run `jasmine-node .` in the root folder.
 
 Changelog
 -------
+
+**1.0.1**
+
+- Auto-initialize a new instance of Hashids in case it wasn't initialized with "new" (thanks to [@rfink](https://github.com/ivanakimov/hashids.node.js/pull/15))
 
 **1.0.0**
 
