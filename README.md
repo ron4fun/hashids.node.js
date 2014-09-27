@@ -5,7 +5,7 @@
 Full Documentation
 -------
 
-A small Node.js class to generate YouTube-like hashids from one or many numbers. Use hashids when you do not want to expose your database ids to the user. Read full documentation at: [http://hashids.org/node-js](http://hashids.org/node-js)
+A small Node.js class to generate YouTube-like ids from one or many numbers. Use hashids when you do not want to expose your database ids to the user. Read full documentation at: [http://hashids.org/node-js](http://hashids.org/node-js)
 
 [![hashids](https://api.travis-ci.org/ivanakimov/hashids.node.js.svg "Hashids")](https://travis-ci.org/ivanakimov/hashids.node.js)
 
@@ -282,7 +282,7 @@ Changelog
 - Version tag added: `1.0`
 - `README.md` updated
 
-**0.3.3 - Current Stable**
+**0.3.3**
 
 - `.toString()` added in `encryptHex()`: [https://github.com/ivanakimov/hashids.node.js/pull/9](https://github.com/ivanakimov/hashids.node.js/pull/9) (thanks to [@namuol](https://github.com/namuol))
 
