@@ -15,7 +15,7 @@ Installation
 1. Node it up: [http://nodejs.org/download/](http://nodejs.org/download/)
 2. Install using npm:
 	
-	`npm install -g hashids`
+	`npm install hashids`
 	
 Updating from v0.3 to 1.0?
 -------
