@@ -1,5 +1,6 @@
 
-Hashids
+![hashids](http://hashids.org/public/img/hashids-logo-normal.png "Hashids")
+
 -------
 
 A small Node.js class to generate YouTube-like ids from one or many numbers. Use hashids when you do not want to expose your database ids to the user. Read **full documentation** at: [http://hashids.org/node-js](http://hashids.org/node-js)
